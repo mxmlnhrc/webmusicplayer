@@ -1,1 +1,7 @@
 /env
+
+
+musicplayer/musicplayer/db.sqlite3
+musicplayer/musicplayer/__pycache__/
+
+/musicplayer/key.txt
