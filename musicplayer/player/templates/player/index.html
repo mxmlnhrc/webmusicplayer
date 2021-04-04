@@ -17,13 +17,14 @@
 <hr>
 
 <h4>Latest Realeses</h4>
-
+<br>
 {% for song in latest %}
 <div>
     {% if song.cover %}
     <img src="{{ song.cover.url }}" alt="">
     {% endif %}
     <h3>{{ song.title }}</h3>
+    <h4>{{ song.artist }} {% if song.feat %}feat. {{ song.feat }}{% endif %}</h4>
 </div>
 {% endfor %}
 
