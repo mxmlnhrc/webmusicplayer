@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models.fields import DateTimeCheckMixin, DateTimeField
 
+from .utils import check_format
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=255, blank=False)
@@ -20,7 +22,7 @@ class Album(models.Model):
 class Song(models.Model):
     cover = models.ImageField(upload_to='song/cover', blank=True, null=True)
     title = models.CharField(max_length=255, blank=False, null=False)
-    song = models.FileField(upload_to="song/song")
+    song = models.FileField(upload_to="song/song", validators=[check_format])
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     feat = models.CharField(max_length=255, blank=True, null=True)
     album = models.ForeignKey(Album,
