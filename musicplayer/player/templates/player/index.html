@@ -21,15 +21,22 @@
         {% endif %}
         <h3>{{ song.title }}</h3>
         <h4>{{ song.artist }} {% if song.feat %}feat. {{ song.feat }}{% endif %}</h4>
-        <audio controls>
+        <audio id="player">
             <source src="{{ song.song.url }}" type="audio/mpeg">
             <source src="{{ song.song.url }}" type="audio/ogg">
             <source src="{{ song.song.url }}" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
+        <div>
+            <button id="play">Play</button>
+            <button onclick="document.getElementById('player').pause()">Pause</button>
+            <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
+            <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button>
+        </div>
         <h4>{{ song.album }}</h4>
         <hr>
     </div>
     {% endfor %}
 </div>
+<script src="{% static 'js/player.js' %}"></script>
 {% endblock %}
